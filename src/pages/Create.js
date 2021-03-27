@@ -5,8 +5,18 @@ import Container from '@material-ui/core/Container'
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import SendIcon from '@material-ui/icons/Send';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
+import { makeStyles } from '@material-ui/core'
+
+const useStyles = makeStyles({
+  btn: {
+    fontSize: 60,
+    backgroundColor: 'violet'
+  }
+})
 
 export default function Create() {
+  const classes = useStyles()
+
   return (
     <Container>
       <Typography
@@ -18,11 +28,11 @@ export default function Create() {
         Create a new note
       </Typography>
       <Button
+       className={classes.btn}
        onClick={() => console.log('You clicked me!')}
        type="submit"
        color="secondary" 
        variant="contained"
-       startIcon={<SendIcon />}
        endIcon = {<KeyboardArrowRightIcon />}
        >
         Submit
