@@ -10,7 +10,14 @@ import { makeStyles } from '@material-ui/core'
 const useStyles = makeStyles({
   btn: {
     fontSize: 60,
-    backgroundColor: 'violet'
+    backgroundColor: 'violet',
+    '&:hover': {
+      backgroundColor: 'blue'
+    }
+  },
+  title: {
+    textDecoration: 'underline',
+    marginBottom: 20
   }
 })
 
@@ -20,6 +27,7 @@ export default function Create() {
   return (
     <Container>
       <Typography
+        className={classes.title}
         variant="h6"
         color="textSecondary"
         component="h2"
