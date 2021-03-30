@@ -2,6 +2,13 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core'
 import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import { AddCircleOutlineOutlined, SubjectOutlined } from '@material-ui/icons'
+import { useHistory } from 'react-router'
+
 
 const drawerWidth = 240;
 
@@ -23,6 +30,20 @@ const useStyles = makeStyles({
 
 const Layout = ({ children }) => {
     const classes = useStyles()
+    const history = useHistory()
+
+    const menuItems = [
+        {
+            text: 'My Notes',
+            icon: <SubjectOutlined color="secondary" />,
+            path: '/'
+        },
+        {
+            text: 'Create Notes',
+            icon: <AddCircleOutlineOutlined color="secondary" />,
+            path: '/create'
+        }
+    ]
 
     return (
         <div className={classes.root}>
@@ -40,6 +61,22 @@ const Layout = ({ children }) => {
                         Ninja Notes
                     </Typography>
                 </div>
+
+                {/* List Links */}
+
+                <List>
+                    {menuItems.map(item => (
+                        <ListItem
+                            button
+                            key={item.text}
+                            onClick={() => history.push(item.path)}
+                        >
+                            <ListItemIcon>{item.icon}</ListItemIcon>
+                            <ListItemText primary={item.text} />
+                        </ListItem>
+                    ))}
+                </List>
+
             </Drawer>
             
             <div className={classes.page}>
