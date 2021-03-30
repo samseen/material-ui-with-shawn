@@ -7,7 +7,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import { AddCircleOutlineOutlined, SubjectOutlined } from '@material-ui/icons'
-import { useHistory } from 'react-router'
+import { useHistory, useLocation } from 'react-router'
 
 
 const drawerWidth = 240;
@@ -25,12 +25,16 @@ const useStyles = makeStyles({
     },
     root: {
         display: 'flex'
+    },
+    active: {
+        background: '#f4f4f4'
     }
 })
 
 const Layout = ({ children }) => {
     const classes = useStyles()
     const history = useHistory()
+    const location = useLocation()
 
     const menuItems = [
         {
@@ -70,6 +74,7 @@ const Layout = ({ children }) => {
                             button
                             key={item.text}
                             onClick={() => history.push(item.path)}
+                            className={location.pathname == item.path ? classes.active : null}
                         >
                             <ListItemIcon>{item.icon}</ListItemIcon>
                             <ListItemText primary={item.text} />
