@@ -4,6 +4,7 @@ import Create from './pages/Create'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 import { purple } from '@material-ui/core/colors'
 import Layout from './components/Layout'
+import ComplexGrid from './components/ComplexGrid'
 // json-server --watch data/db.json --port 8000
 
 const theme = createMuiTheme({
@@ -29,6 +30,7 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/">
+              <ComplexGrid />
               <Notes />
             </Route>
             <Route path="/create">
